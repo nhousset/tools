@@ -11,4 +11,4 @@ mkdir iotest
 cd iotest
 curl http://ftp.sas.com/techsup/download/ts-tools/external/SASTSST_UNIX_installation.sh --output SASTSST_UNIX_installation.sh
 chmod 777 SASTSST_UNIX_installation.sh
-./ SASTSST_UNIX_installation.sh
+./SASTSST_UNIX_installation.sh
