@@ -70,9 +70,9 @@ echo -en "${RED} Tracking Session ${NC}\n"
 
 cat /tmp/$$.casCtrl  | grep 'session' | grep 'Process ID'  | awk '{print $1" "$15}' 
 
-echo -en "${BLUE} Enter session ID (q to quit) : ${NC}\n"
+echo -en "${BLUE} Enter session ID (q to quit) : ${NC}"
 read TackingSessionCtrlID
-while [ $TackingSessionCtrlID <> "q"] 
+while [ $TackingSessionCtrlID <> "q" ] 
 do
 
 	grep $TackingSessionCtrlID /tmp/$$.casCtrl > /tmp/$$.$TackingSessionCtrlID.casCtrl
