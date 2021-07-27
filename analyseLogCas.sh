@@ -68,7 +68,7 @@ echo -en "${BLUE} Start ${NC}\n"
 
 echo -en "${RED} Tracking Session ${NC}\n"
 
-for sessionId in $(cat /tmp/$$.casCtrl  | grep 'session' | grep 'Process ID'  | awk '{print $1"|"$15}' | cut -d "." -f 0 )
+for sessionId in $(cat /tmp/$$.casCtrl  | grep 'session' | grep 'Process ID'  | awk '{print $1"|"$15}' | cut -d "." -f 1 )
 do
 	echo $sessionId
 done
