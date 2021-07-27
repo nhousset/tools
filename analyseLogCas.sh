@@ -27,7 +27,7 @@ grep tkcsesop  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "Session will wait f
 grep tkcsesop  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "Enough nodes are connected"
 
 
-grep tkcaslib  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep ""Synchronizing caslibs""
+grep tkcaslib  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "Synchronizing caslibs"
 
 
 
