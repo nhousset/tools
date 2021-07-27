@@ -95,12 +95,14 @@ do
 	echo -en "${BLUE} END ${NC}\n"
 	grep "tkcsesinst.c:3968]"  /tmp/$$.$TackingSessionCtrlID.casCtrl
 
-	echo ""
-	cat /tmp/$$.casCtrl  | grep 'session' | grep 'Process ID'  | awk '{print $1" "$15}' 
+	
 	
 	echo -en "${BLUE} Press a key to continue ${NC}\n"
 	read pause
+	echo ""
 	echo "**************************************************************"
+	echo ""
+	cat /tmp/$$.casCtrl  | grep 'session' | grep 'Process ID'  | awk '{print $1" "$15}' 
 	echo -en "${BLUE} Enter session ID (q to quit) : ${NC}\n"
 	read TackingSessionCtrlID
 done
