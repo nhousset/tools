@@ -66,6 +66,8 @@ echo -en "${BLUE} Start ${NC}\n"
 export startSession=$( grep "launchServicesLaunch"  /tmp/$$.casCtrl | cut -d " " -f 1 | head -1)
 echo $startSession
 
+echo -en "${RED} Tracking Session ${NC}\n"
+grep "Tracking Session:" /tmp/$$.casCtrl | head -1 |cut -d "/" -f 1
 
 export TackingSessionCtrl=$(grep "Tracking Session:" /tmp/$$.casCtrl | head -1 |cut -d "/" -f 1)
 #echo $TackingSessionCtrl
