@@ -68,29 +68,36 @@ echo -en "${BLUE} Start ${NC}\n"
 
 echo -en "${RED} Tracking Session ${NC}\n"
 
-cat /tmp/$$.casCtrl  | grep 'session' | grep 'Process ID'  | awk '{print $1" "$15"}' 
+cat /tmp/$$.casCtrl  | grep 'session' | grep 'Process ID'  | awk '{print $1" "$15}' 
 
-echo -en "${BLUE} Enter session ID : ${NC}\n"
+echo -en "${BLUE} Enter session ID (q to quit) : ${NC}\n"
 read TackingSessionCtrlID
+while [ $TackingSessionCtrlID <> "q"] 
+do
 
-grep $TackingSessionCtrlID /tmp/$$.casCtrl > /tmp/$$.$TackingSessionCtrlID.casCtrl
+	grep $TackingSessionCtrlID /tmp/$$.casCtrl > /tmp/$$.$TackingSessionCtrlID.casCtrl
 
-echo -en "${BLUE} Connnect to worker node ${NC}\n"
-grep tkcsesop  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "adding to queue"
-grep tkcsesop  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "Session will wait for"
-grep tkcsesop  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "Enough nodes are connected"
+	echo -en "${BLUE} Connnect to worker node ${NC}\n"
+	grep tkcsesop  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "adding to queue"
+	grep tkcsesop  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "Session will wait for"
+	grep tkcsesop  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "Enough nodes are connected"
 
-echo -en "${BLUE} Synchronizing caslibs ${NC}\n"
-grep tkcaslib  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "Synchronizing caslibs"
-grep tkcaslib  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "tkcaslib.c:3547" | tail -1
-
-
-echo -en "${BLUE} Cas Action ${NC}\n"
-grep  "casgeneral.c:942"  /tmp/$$.$TackingSessionCtrlID.casCtrl > /tmp/$$.$TackingSessionCtrlID.casACtion
-grep "tkcastaba.c"  /tmp/$$.$TackingSessionCtrlID.casCtrl > /tmp/$$.$TackingSessionCtrlID.casACtion
-sort  /tmp/$$.$TackingSessionCtrlID.casACtion
-
-echo -en "${BLUE} END ${NC}\n"
-grep "tkcsesinst.c:3968]"  /tmp/$$.$TackingSessionCtrlID.casCtrl
+	echo -en "${BLUE} Synchronizing caslibs ${NC}\n"
+	grep tkcaslib  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "Synchronizing caslibs"
+	grep tkcaslib  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "tkcaslib.c:3547" | tail -1
 
 
+	echo -en "${BLUE} Cas Action ${NC}\n"
+	grep  "casgeneral.c:942"  /tmp/$$.$TackingSessionCtrlID.casCtrl > /tmp/$$.$TackingSessionCtrlID.casACtion
+	grep "tkcastaba.c"  /tmp/$$.$TackingSessionCtrlID.casCtrl > /tmp/$$.$TackingSessionCtrlID.casACtion
+	sort  /tmp/$$.$TackingSessionCtrlID.casACtion
+
+	echo -en "${BLUE} END ${NC}\n"
+	grep "tkcsesinst.c:3968]"  /tmp/$$.$TackingSessionCtrlID.casCtrl
+
+	echo ""
+	cat /tmp/$$.casCtrl  | grep 'session' | grep 'Process ID'  | awk '{print $1" "$15}' 
+
+	echo -en "${BLUE} Enter session ID (q to quit) : ${NC}\n"
+	read TackingSessionCtrlID
+done
