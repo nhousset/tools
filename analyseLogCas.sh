@@ -72,7 +72,10 @@ for sessionId in $(cat /tmp/$$.casCtrl  | grep 'session' | grep 'Process ID'  | 
 do
 	dateSession=$(echo $sessionId | cut -d "|" -f 1)
 	idSession=$(echo $sessionId | cut -d "|" -f 2)
-	echo $dateSession"\t"$idSession
+	
+	FindInMemoryTable=$(grep $TackingSessionCtrlID /tmp/$$.casCtrl | grep  FindInMemoryTable)
+	
+	echo $dateSession" "$idSession" " $FindInMemoryTable
 done
 
 #FindInMemoryTable
