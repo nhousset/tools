@@ -68,7 +68,12 @@ echo -en "${BLUE} Start ${NC}\n"
 
 echo -en "${RED} Tracking Session ${NC}\n"
 
-cat /tmp/$$.casCtrl  | grep 'session' | grep 'Process ID'  | awk '{print $1" "$15}' 
+for sessionId in $(cat /tmp/$$.casCtrl  | grep 'session' | grep 'Process ID'  | awk '{print $1"|"$15}')
+do
+	echo $sessionId
+done
+
+#FindInMemoryTable
 
 echo -en "${BLUE} Enter session ID (q to quit) : ${NC}"
 read TackingSessionCtrlID
