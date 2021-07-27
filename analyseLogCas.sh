@@ -1,5 +1,13 @@
 #!/bin/bash
 
+
+RED='\033[031m'
+GREEN='\033[032m'
+YELLOW='\033[033m'
+BLUE='\033[034m'
+NC='\033[0m' 
+
+
 export casUserName=PMAA769
 
 export logPath=/home/centos/analyseLogCAS/TEST1
@@ -21,15 +29,17 @@ echo $TackingSessionCtrlID
 
 grep $TackingSessionCtrlID /tmp/$$.casCtrl > /tmp/$$.$TackingSessionCtrlID.casCtrl
 
-
+echo -en "${BLUE} Connnect to worker node ${NC}\n"
 grep tkcsesop  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "adding to queue"
 grep tkcsesop  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "Session will wait for"
 grep tkcsesop  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "Enough nodes are connected"
 
-
+echo -en "${BLUE} Synchronizing caslibs ${NC}\n"
 grep tkcaslib  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "Synchronizing caslibs"
 grep tkcaslib  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "tkcaslib.c:3547" | tail -1
 
+
+echo -en "${BLUE} Synchronizing caslibs ${NC}\n"
 
 
 
