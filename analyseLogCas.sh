@@ -68,9 +68,9 @@ echo -en "${BLUE} Start ${NC}\n"
 
 echo -en "${RED} Tracking Session ${NC}\n"
 
-set +x
-cat /tmp/$$.casCtrl  | grep "Launched session controllers"
-set -x
+echo "cat /tmp/$$.casCtrl  | grep 'Launched session controllers'"
+cat /tmp/$$.casCtrl  | grep 'Launched session controllers'
+
 #| cut -d "/" -f 1
 
 exit;
