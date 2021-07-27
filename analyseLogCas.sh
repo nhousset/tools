@@ -8,10 +8,36 @@ BLUE='\033[034m'
 NC='\033[0m' 
 
 
-export casUserName=PMAA769
+erreur()
+{
+	echo "error: unsupported option"
+	usage
+}
 
-export logPath=/home/centos/analyseLogCAS/TEST1
-export logCasCtrl=cas_2021-07-26_lp30022.posix.covea.priv_129846.log
+usage()
+{
+	
+	echo ""
+	echo "Usage:"
+	echo "$0 [options]"
+	echo ""
+	echo "Try :"
+	echo "$0 -u <user> -p <path> -f <file>"
+	echo "$0 -u PMAA769 -t /home/centos/analyseLogCAS/TEST1 -f cas_2021-07-26_lp30022.posix.covea.priv_129846.log"
+	echo ""
+	
+}
+
+while getopts "u:p:f:h" opt
+do
+   case "$opt" in
+      u ) export casUserName="$OPTARG" ;;
+      p ) export logPath="$OPTARG" ;;
+      f ) export logCasCtrl="$OPTARG" ;;
+	  h ) usage ;; 
+      ? ) erreur ;; 
+   esac
+done
 
 
 
