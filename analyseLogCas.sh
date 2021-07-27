@@ -40,9 +40,10 @@ grep tkcaslib  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "Synchronizing casli
 grep tkcaslib  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "tkcaslib.c:3547" | tail -1
 
 
-echo -en "${BLUE} Synchronizing caslibs ${NC}\n"
+echo -en "${BLUE} Cas Action ${NC}\n"
+grep  "casgeneral.c:942"  /tmp/$$.$TackingSessionCtrlID.casCtrl
+grep "tkcastaba.c"  /tmp/$$.$TackingSessionCtrlID.casCtrl
 
-
-
+grep "tkcsesinst.c:3968]"  /tmp/$$.$TackingSessionCtrlID.casCtrl
 
 
