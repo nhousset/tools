@@ -22,8 +22,8 @@ usage()
 	echo "$0 [options]"
 	echo ""
 	echo "Try :"
-	echo "$0 -u <user> -p <path> -f <file>"
-	echo "$0 -u PMAA769 -p /home/centos/analyseLogCAS/TEST1 -f cas_2021-07-26_lp30022.posix.covea.priv_129846.log"
+	echo "$0 -u <user> -p <path> -f <file> -t <table>"
+	echo "$0 -u PMAA769 -p /home/centos/analyseLogCAS/TEST1 -f cas_2021-07-26_lp30022.posix.covea.priv_129846.log -t PUMA"
 	echo ""
 	
 }
@@ -35,6 +35,7 @@ do
       u ) export casUserName="$OPTARG" ;;
       p ) export logPath="$OPTARG" ;;
       f ) export logCasCtrl="$OPTARG" ;;
+      t ) export tableToFilter="$OPTARG" ;;
 	  h ) usage ;; 
       ? ) erreur ;; 
    esac
@@ -75,11 +76,18 @@ listSession()
 		dateSession=$(echo $sessionId | cut -d "|" -f 1)
 		idSession=$(echo $sessionId | cut -d "|" -f 2)
 	
-		FindInMemoryTable=$(grep $idSession /tmp/$$.casCtrl | grep  FindInMemoryTable| grep -v "="  |  awk '{print $NF}' | cut -d "(" -f 2 |  cut -d ")" -f 1 | sort -u | tail -3 ) 
+		if [ "$tableToFilter" == "" ]
+		then
+			FindInMemoryTable=$(grep $idSession /tmp/$$.casCtrl | grep  FindInMemoryTable| grep -v "="  |  awk '{print $NF}' | cut -d "(" -f 2 |  cut -d ")" -f 1 | sort -u | tail -3 ) 
+		else
+			FindInMemoryTable=$(grep $idSession /tmp/$$.casCtrl | grep  FindInMemoryTable|  grep $tableToFilter | grep -v "="  |  awk '{print $NF}' | cut -d "(" -f 2 |  cut -d ")" -f 1 | sort -u | tail -3 ) 
+		fi
 		endSession=$(grep $idSession /tmp/$$.casCtrl | grep "tkcsesinst.c:3968]" | tail -1  | awk '{print $1}' )
-	
+		
+		
+		
 		echo -en "${YELLOW}"$dateSession"${NC} "$endSession" ${YELLOW}"$idSession"${NC} "$FindInMemoryTable"\n"
-		done
+	done
 }
 
 #FindInMemoryTable
