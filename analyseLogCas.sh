@@ -69,12 +69,11 @@ echo $startSession
 echo -en "${RED} Tracking Session ${NC}\n"
 grep "Tracking Session:" /tmp/$$.casCtrl | cut -d "/" -f 1
 
-exit
-
 export TackingSessionCtrl=$(grep "Tracking Session:" /tmp/$$.casCtrl | head -1 |cut -d "/" -f 1)
 #echo $TackingSessionCtrl
 
 export TackingSessionCtrlID=$(echo $TackingSessionCtrl | awk -F " " '{print $NF}' )
+export TackingSessionCtrlID=94273
 
 grep $TackingSessionCtrlID /tmp/$$.casCtrl > /tmp/$$.$TackingSessionCtrlID.casCtrl
 
