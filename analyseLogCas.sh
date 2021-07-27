@@ -76,7 +76,8 @@ do
 	echo "grep $idSession /tmp/$$.casCtrl | grep  FindInMemoryTable | awk '{print $NF}'"
 	FindInMemoryTable=$(grep $idSession /tmp/$$.casCtrl | grep  FindInMemoryTable | awk '{print $NF}')
 
-	echo $dateSession" "$idSession" " $FindInMemoryTable
+	echo $dateSession" "$idSession
+	#" " $FindInMemoryTable
 done
 
 #FindInMemoryTable
