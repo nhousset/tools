@@ -9,7 +9,7 @@ export logCasCtrl=cas_2021-07-26_lp30022.posix.covea.priv_129846.log
 
 grep $casUserName $logPath/$logCasCtrl > /tmp/$$.casCtrl
 
-export startSession=$( grep "launchServicesLaunch"  /tmp/$$.casCtrl | cut -d " " -f 1 | head 1)
+export startSession=$( grep "launchServicesLaunch"  /tmp/$$.casCtrl | cut -d " " -f 1 | head -1)
 echo $startSession
 
 
