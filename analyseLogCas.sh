@@ -85,8 +85,10 @@ listSession()
 		endSession=$(grep $idSession /tmp/$$.casCtrl | grep "tkcsesinst.c:3968]" | tail -1  | awk '{print $1}' )
 		
 		
-		
-		echo -en "${YELLOW}"$dateSession"${NC} "$endSession" ${YELLOW}"$idSession"${NC} "$FindInMemoryTable"\n"
+		if [ "FindInMemoryTable" <> "" ]
+		then
+			echo -en "${YELLOW}"$dateSession"${NC} "$endSession" ${YELLOW}"$idSession"${NC} "$FindInMemoryTable"\n"
+		fi
 	done
 }
 
