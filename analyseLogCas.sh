@@ -29,7 +29,7 @@ usage()
 }
 
 echo $OPTARG
-while getopts "u:p:f:h" opt
+while getopts "u:p:f:t:h" opt
 do
    case "$opt" in
       u ) export casUserName="$OPTARG" ;;
