@@ -73,11 +73,10 @@ do
 	dateSession=$(echo $sessionId | cut -d "|" -f 1)
 	idSession=$(echo $sessionId | cut -d "|" -f 2)
 	
-	echo "grep $idSession /tmp/$$.casCtrl | grep  FindInMemoryTable | awk '{print $NF}'"
 	FindInMemoryTable=$(grep $idSession /tmp/$$.casCtrl | grep  FindInMemoryTable| grep -v "="  |  awk '{print $NF}' | cut -d "(" -f 1 | sort -u ) 
 
-	echo $dateSession" "$idSession
-	#" " $FindInMemoryTable
+	echo $dateSession" "$idSession" " $FindInMemoryTable
+	
 done
 
 #FindInMemoryTable
