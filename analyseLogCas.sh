@@ -22,6 +22,15 @@ echo $TackingSessionCtrlID
 grep $TackingSessionCtrlID /tmp/$$.casCtrl > /tmp/$$.$TackingSessionCtrlID.casCtrl
 
 
+grep tkcsesop  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "adding to queue"
+grep tkcsesop  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "Session will wait for"
+grep tkcsesop  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "Enough nodes are connected"
+
+
+grep tkcaslib  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep ""Synchronizing caslibs""
+
+
+
 
 
 
