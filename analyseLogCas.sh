@@ -28,6 +28,7 @@ usage()
 	
 }
 
+echo $OPTARG
 while getopts "u:p:f:h" opt
 do
    case "$opt" in
