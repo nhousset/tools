@@ -74,9 +74,9 @@ do
 	idSession=$(echo $sessionId | cut -d "|" -f 2)
 	
 	FindInMemoryTable=$(grep $idSession /tmp/$$.casCtrl | grep  FindInMemoryTable| grep -v "="  |  awk '{print $NF}' | cut -d "(" -f 2 |  cut -d ")" -f 1 | sort -u ) 
-	endSession=$(grep $idSession /tmp/$$.casCtrl |grep "tkcsesinst.c:3968]")
+	endSession=$(grep $idSession /tmp/$$.casCtrl |grep "tkcsesinst.c:3968]" | awk '{print $1}' )
 
-	echo $dateSession" "$idSession" " $FindInMemoryTable" "$endSession
+	echo $dateSession" "$endSession" "$idSession" "$FindInMemoryTable
 	
 done
 
