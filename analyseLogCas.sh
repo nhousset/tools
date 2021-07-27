@@ -68,20 +68,23 @@ echo -en "${BLUE} Start ${NC}\n"
 
 echo -en "${RED} Tracking Session ${NC}\n"
 
-for sessionId in $(cat /tmp/$$.casCtrl  | grep 'session' | grep 'Process ID'  | awk '{print $1"|"$15}' | cut -d "." -f 1 )
-do
-	dateSession=$(echo $sessionId | cut -d "|" -f 1)
-	idSession=$(echo $sessionId | cut -d "|" -f 2)
+listSession()
+{
+	for sessionId in $(cat /tmp/$$.casCtrl  | grep 'session' | grep 'Process ID'  | awk '{print $1"|"$15}' | cut -d "." -f 1 )
+	do
+		dateSession=$(echo $sessionId | cut -d "|" -f 1)
+		idSession=$(echo $sessionId | cut -d "|" -f 2)
 	
-	FindInMemoryTable=$(grep $idSession /tmp/$$.casCtrl | grep  FindInMemoryTable| grep -v "="  |  awk '{print $NF}' | cut -d "(" -f 2 |  cut -d ")" -f 1 | sort -u ) 
-	endSession=$(grep $idSession /tmp/$$.casCtrl | grep "tkcsesinst.c:3968]" | tail -1  | awk '{print $1}' )
+		FindInMemoryTable=$(grep $idSession /tmp/$$.casCtrl | grep  FindInMemoryTable| grep -v "="  |  awk '{print $NF}' | cut -d "(" -f 2 |  cut -d ")" -f 1 | sort -u ) 
+		endSession=$(grep $idSession /tmp/$$.casCtrl | grep "tkcsesinst.c:3968]" | tail -1  | awk '{print $1}' )
 	
-	echo $dateSession" "$endSession" "$idSession" "$FindInMemoryTable
-	
-done
+		echo $dateSession" "$endSession" "$idSession" "$FindInMemoryTable
+		done
+}
 
 #FindInMemoryTable
 
+listSession
 echo -en "${BLUE} Enter session ID (q to quit) : ${NC}"
 read TackingSessionCtrlID
 while [ $TackingSessionCtrlID <> "q" ] 
@@ -114,7 +117,7 @@ do
 	echo ""
 	echo "**************************************************************"
 	echo ""
-	cat /tmp/$$.casCtrl  | grep 'session' | grep 'Process ID'  | awk '{print $1" "$15}' 
-	echo -en "${BLUE} Enter session ID (q to quit) : ${NC}\n"
+	listSession
+	echo -en "${BLUE} Enter session ID (q to quit) : ${NC}"
 	read TackingSessionCtrlID
 done
