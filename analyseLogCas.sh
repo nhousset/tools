@@ -41,9 +41,11 @@ grep tkcaslib  /tmp/$$.$TackingSessionCtrlID.casCtrl | grep "tkcaslib.c:3547" | 
 
 
 echo -en "${BLUE} Cas Action ${NC}\n"
-grep  "casgeneral.c:942"  /tmp/$$.$TackingSessionCtrlID.casCtrl
-grep "tkcastaba.c"  /tmp/$$.$TackingSessionCtrlID.casCtrl
+grep  "casgeneral.c:942"  /tmp/$$.$TackingSessionCtrlID.casCtrl > /tmp/$$.$TackingSessionCtrlID.casACtion
+grep "tkcastaba.c"  /tmp/$$.$TackingSessionCtrlID.casCtrl > /tmp/$$.$TackingSessionCtrlID.casACtion
+sort  /tmp/$$.$TackingSessionCtrlID.casACtion
 
+echo -en "${BLUE} END ${NC}\n"
 grep "tkcsesinst.c:3968]"  /tmp/$$.$TackingSessionCtrlID.casCtrl
 
 
