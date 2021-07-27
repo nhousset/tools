@@ -66,7 +66,8 @@ echo -en "${BLUE} Start ${NC}\n"
 #export startSession=$( grep "launchServicesLaunch"  /tmp/$$.casCtrl | cut -d " " -f 1 | head -1)
 #echo $startSession
 
-echo -en "${RED} Tracking Session ${NC}\n"/tmp/$$.casCtrl 
+echo -en "${RED} Tracking Session ${NC}\n"
+
 set +x
 cat /tmp/$$.casCtrl  | grep "Launched session controllers"
 set -x
