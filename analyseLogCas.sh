@@ -67,13 +67,14 @@ export startSession=$( grep "launchServicesLaunch"  /tmp/$$.casCtrl | cut -d " "
 echo $startSession
 
 echo -en "${RED} Tracking Session ${NC}\n"
-grep "Tracking Session:" /tmp/$$.casCtrl | cut -d "/" -f 1
+grep "[casgeneral.c:4997] - Launched session controller. Process ID is" /tmp/$$.casCtrl | cut -d "/" -f 1
 
-export TackingSessionCtrl=$(grep "Tracking Session:" /tmp/$$.casCtrl | head -1 |cut -d "/" -f 1)
-#echo $TackingSessionCtrl
+export TackingSessionCtrl=$(grep "[casgeneral.c:4997] - Launched session controller. Process ID is " /tmp/$$.casCtrl | head -1 |cut -d "/" -f 1)
+echo $TackingSessionCtrl
 
-export TackingSessionCtrlID=$(echo $TackingSessionCtrl | awk -F " " '{print $NF}' )
-export TackingSessionCtrlID=94273
+export TackingSessionCtrlID=$(echo $TackingSessionCtrl | awk -F " " '{print $NF}' )#export TackingSessionCtrlID=94273
+
+exit;
 
 grep $TackingSessionCtrlID /tmp/$$.casCtrl > /tmp/$$.$TackingSessionCtrlID.casCtrl
 
