@@ -80,7 +80,7 @@ listSession()
 		then
 			FindInMemoryTable=$(grep $idSession /tmp/$$.casCtrl | grep  FindInMemoryTable| grep -v "="  |  awk '{print $NF}' | cut -d "(" -f 2 |  cut -d ")" -f 1 | sort -u | tail -3 ) 
 		else
-			FindInMemoryTable=$(grep $idSession /tmp/$$.casCtrl | grep  FindInMemoryTable|  grep $tableToFilter | grep -v "="  |  awk '{print $NF}' | cut -d "(" -f 2 |  cut -d ")" -f 1 | sort -u | tail -3 ) 
+			FindInMemoryTable=$(grep $idSession /tmp/$$.casCtrl | grep  FindInMemoryTable|  grep -v "="  |  awk '{print $NF}' | cut -d "(" -f 2 |  cut -d ")" -f 1 | sort -u | grep $tableToFilter | tail -3 ) 
 		fi
 		endSession=$(grep $idSession /tmp/$$.casCtrl | grep "tkcsesinst.c:3968]" | tail -1  | awk '{print $1}' )
 		
