@@ -70,7 +70,9 @@ echo -en "${RED} Tracking Session ${NC}\n"
 
 for sessionId in $(cat /tmp/$$.casCtrl  | grep 'session' | grep 'Process ID'  | awk '{print $1"|"$15}' | cut -d "." -f 1 )
 do
-	echo $sessionId
+	dateSession=$(echo $sessionId | cut -d "|" -f 1)
+	idSession=$(echo $sessionId | cut -d "|" -f 2)
+	echo $dateSession"\t"$idSession
 done
 
 #FindInMemoryTable
