@@ -39,7 +39,24 @@ do
    esac
 done
 
+if [ "$casUserName" == "" ]
+then
+ erreur
+ exit
+fi
 
+
+if [ "$logPath" == "" ]
+then
+ erreur
+ exit
+fi
+
+if [ "$logCasCtrl" == "" ]
+then
+ erreur
+ exit
+fi
 
 grep $casUserName $logPath/$logCasCtrl > /tmp/$$.casCtrl
 
