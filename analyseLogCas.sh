@@ -63,11 +63,14 @@ grep $casUserName $logPath/$logCasCtrl > /tmp/$$.casCtrl
 
 echo -en "${BLUE} Start ${NC}\n"
 
-export startSession=$( grep "launchServicesLaunch"  /tmp/$$.casCtrl | cut -d " " -f 1 | head -1)
-echo $startSession
+#export startSession=$( grep "launchServicesLaunch"  /tmp/$$.casCtrl | cut -d " " -f 1 | head -1)
+#echo $startSession
 
 echo -en "${RED} Tracking Session ${NC}\n"
-grep "[casgeneral.c:4997] - Launched session controller. Process ID is" /tmp/$$.casCtrl | cut -d "/" -f 1
+grep " Launched session controllers" /tmp/$$.casCtrl 
+#| cut -d "/" -f 1
+
+exit;
 
 export TackingSessionCtrl=$(grep "[casgeneral.c:4997] - Launched session controller. Process ID is " /tmp/$$.casCtrl | head -1 |cut -d "/" -f 1)
 echo $TackingSessionCtrl
