@@ -68,7 +68,9 @@ echo -en "${BLUE} Start ${NC}\n"
 
 echo -en "${RED} Tracking Session ${NC}\n"
 
-cat /tmp/$$.casCtrl  | grep 'session' | grep 'Process ID'
+cat /tmp/$$.casCtrl  | grep 'session' | grep 'Process ID'  | awk '{print $1 13}' )
+
+exit;
 
 
 export TackingSessionCtrl=$(grep "[casgeneral.c:4997] - Launched session controller. Process ID is " /tmp/$$.casCtrl | head -1 |cut -d "/" -f 1)
