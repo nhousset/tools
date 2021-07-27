@@ -12,6 +12,10 @@ grep $casUserName $logPath/$logCasCtrl > /tmp/$$.casCtrl
 export TackingSessionCtrl=$(grep "Tracking Session:" /tmp/$$.casCtrl | head -1 |cut -d "/" -f 1)
 echo $TackingSessionCtrl
 
+export TackingSessionCtrlID=(echo $TackingSessionCtrl | awk -F " " '{print $NF}' )
+echo $TackingSessionCtrlID
+
+grep $TackingSessionCtrlID /tmp/$$.casCtrl > /tmp/$$.$TackingSessionCtrlIDc.casCtrl
 
 
 
