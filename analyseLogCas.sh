@@ -23,7 +23,7 @@ usage()
 	echo ""
 	echo "Try :"
 	echo "$0 -u <user> -p <path> -f <file>"
-	echo "$0 -u PMAA769 -t /home/centos/analyseLogCAS/TEST1 -f cas_2021-07-26_lp30022.posix.covea.priv_129846.log"
+	echo "$0 -u PMAA769 -p /home/centos/analyseLogCAS/TEST1 -f cas_2021-07-26_lp30022.posix.covea.priv_129846.log"
 	echo ""
 	
 }
